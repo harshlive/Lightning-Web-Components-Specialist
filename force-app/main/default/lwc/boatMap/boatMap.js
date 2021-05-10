@@ -1,9 +1,20 @@
+/**
+ * @author            : Vrushabh Uprikar
+ * @last modified on  : 05-10-2021
+ * @last modified by  : Vrushabh Uprikar
+ * Modifications Log 
+ * Ver   Date         Author             Modification
+ * 1.0   05-10-2021   Vrushabh Uprikar   Initial Version
+**/
+import { LightningElement, wire } from 'lightning/messageService';
 // import BOATMC from the message channel
-
+import BOATMC from '@salesforce/memessageChannel/BoatMessageChannel__c';
 // Declare the const LONGITUDE_FIELD for the boat's Longitude__s
+
 // Declare the const LATITUDE_FIELD for the boat's Latitude
 // Declare the const BOAT_FIELDS as a list of [LONGITUDE_FIELD, LATITUDE_FIELD];
-export default class BoatMap extends LightningElement {
+export default class BoatMap extends LightningElement
+{
   // private
   subscription = null;
   boatId;
