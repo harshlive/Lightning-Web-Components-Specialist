@@ -13,10 +13,10 @@ import getBoatTypes from '@salesforce/apex/BoatDataService.getBoatTypes';
 export default class BoatSearchForm extends LightningElement
 {
     @track selectedBoatTypeId = '';
-    value = '';
+    
     // Private
     error = undefined;
-    label;
+    
     @track searchOptions;
 
     // Wire a custom Apex method
@@ -25,7 +25,7 @@ export default class BoatSearchForm extends LightningElement
     {
         if (data)
         {
-            console.log(data);
+            console.log(JSON.stringify(data));
             this.searchOptions = data.map(type => {
                 return {
                     label: type.Name,
