@@ -1,6 +1,6 @@
 /**
  * @author            : Vrushabh Uprikar
- * @last modified on  : 05-10-2021
+ * @last modified on  : 05-11-2021
  * @last modified by  : Vrushabh Uprikar
  * Modifications Log 
  * Ver   Date         Author             Modification
@@ -13,6 +13,7 @@ public with sharing class BoatDataService
     public static final String PRICE_TYPE = 'Price'; 
     public static final String TYPE_TYPE = 'Type'; 
 
+    @AuraEnabled(cacheable=true)
     public static List<Boat__c> getBoats(String boatTypeId) 
     {
         // Without an explicit boatTypeId, the full list is desired
@@ -28,6 +29,7 @@ public with sharing class BoatDataService
         return Database.query(query);
     }
 
+    @AuraEnabled(cacheable=true)
     public static List<Boat__c> getSimilarBoats(Id boatId, String similarBy) 
     {
         List<Boat__c> similarBoats = new List<Boat__c>();
@@ -75,11 +77,13 @@ public with sharing class BoatDataService
         return similarBoats;
     }
 
+    @AuraEnabled(cacheable=true)
     public static List<BoatType__c> getBoatTypes()
     {
         return [SELECT Name, Id FROM BoatType__c WITH SECURITY_ENFORCED ORDER BY Name];
     }
 
+    @AuraEnabled
     public static List<BoatReview__c> getAllReviews(Id boatId)
     {
         return [
@@ -104,6 +108,7 @@ public with sharing class BoatDataService
     }
 
     // Assume this may be an API that return this data, not a SOQL query
+    @AuraEnabled(cacheable=true)
     public static String getBoatsByLocation(Decimal latitude, Decimal longitude, String boatTypeId) 
     {
         // Without an explicit boatTypeId, the full list is desired
@@ -115,6 +120,7 @@ public with sharing class BoatDataService
         return JSON.serialize(Database.query(query));
     }
 
+    @AuraEnabled(cacheable=true)
     public static String updateBoatList(Object data)
     {
         List<Boat__c> boatsForUpdate = (List<Boat__c>) JSON.deserialize(
