@@ -4,17 +4,13 @@
     <isExposed>true</isExposed>
     <targets>
         <target>lightning__RecordPage</target>
-        <target>lightning__AppPage</target>
-        <target>lightning__HomePage</target>
-        <!--<target>lightning__Tab</target>-->
-        <!--<target>lightning__Inbox</target>-->
-        <!--<target>lightning__UtilityBar</target>-->
-        <!--<target>lightning__FlowScreen</target>-->
-        <!--<target>lightningSnapin__ChatMessage</target>-->
-        <!--<target>lightningSnapin__Minimized</target>-->
-        <!--<target>lightningSnapin__PreChat</target>-->
-        <!--<target>lightningSnapin__ChatHeader</target>-->
-        <!--<target>lightningCommunity__Page</target>-->
-        <!--<target>lightningCommunity__Default</target>-->
     </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property label="Enter the property you want to compare by" name="similarBy" type="String" datasource="Type,Price,Length" />
+            <objects>
+                <object>Boat__c</object>
+            </objects>
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>
